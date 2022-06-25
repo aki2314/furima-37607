@@ -9,33 +9,34 @@
 | nickname           | string | null: false                   |
 | firstname          | string | null: false                   |
 | familyname         | string | null: false                   |
+| firstname_two      | string | null: false                   |
+| familyname_two     | string | null: false                   |
+| birthday           | string | null: false                   |
 
 ### Association
 
 - has_many :items
-- has_many :adresses
 - has_many :sells
 
 ## items テーブル
 
-| Column         | Type      | Options                        |
-| -------------- | --------- | ------------------------------ |
-| name           | string    | null: false                    |
-| detail         | text      | null: false                    |
-| category       | text      | null: false                    |
-| status         | text      | null: false                    |
-| shipmentsource | string    | null: false                    |
-| price          | text      | null: false                    |
-| derivaly_price | text      | null: false                    |
-| derivaly_day   | text      | null: false                    |
-| user           |references | null: false, foreign_key: true |
+| Column            | Type         | Options                        |
+| ----------------- | ------------ | ------------------------------ |
+| name              | string       | null: false                    |
+| detail            | text         | null: false                    |
+| category_id       | integer      | null: false                    |
+| status_id         | integer      | null: false                    |
+| shipmentsource_id | integer      | null: false                    |
+| price             | integer      | null: false                    |
+| derivalyprice_id  | integer      | null: false                    |
+| derivalyday_id    | integer      | null: false                    |
+| user              |references    | null: false, foreign_key: true |
 
 
 ### Association
 
-- belongs_to :users
-- has_many :adresses
-- has_many :sells
+- belongs_to :user
+- has_one :sells
 
 ## adresses テーブル
 
@@ -44,9 +45,10 @@
 | source      | string       | null: false                    |
 | buyuser     | string       | null: false                    |
 | post_number | string       | null: false                    |
-| ken         | string       | null: false                    |
+| ken         | integer      | null: false                    |
 | si          | string       | null: false                    |
 | banti       | string       | null: false                    |
+| building    | string       | null: false                    |
 | phone       | string       | null: false                    |
 | user        | references   | null: false, foreign_key: true |
 | item        | references   | null: false, foreign_key: true |
@@ -54,22 +56,18 @@
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- has_one :sells
+- belongs_to :sell
 
 ## sells テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| buyuser | string     | null: false                    |
+| buyuser | references | null: false  foreign_key: true |
 | product | string     | null: false                    |
-| user    | references | null: false, foreign_key: true |
-| item    | references | null: false, foreign_key: true |
 | adress  | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- belongs_to :adresses
+- belongs_to :user
+- belongs_to :item
+- hass_one :adresses
