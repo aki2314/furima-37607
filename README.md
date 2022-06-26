@@ -11,7 +11,7 @@
 | familyname         | string | null: false                   |
 | firstname_two      | string | null: false                   |
 | familyname_two     | string | null: false                   |
-| birthday           | string | null: false                   |
+| birthday           | date   | null: false                   |
 
 ### Association
 
@@ -36,22 +36,20 @@
 ### Association
 
 - belongs_to :user
-- has_one :sells
+- has_one :sell
 
 ## adresses テーブル
 
-| Column      | Type         | Options                        |
-| ----------- | ------------ | ------------------------------ |
-| source      | string       | null: false                    |
-| buyuser     | string       | null: false                    |
-| post_number | string       | null: false                    |
-| ken         | integer      | null: false                    |
-| si          | string       | null: false                    |
-| banti       | string       | null: false                    |
-| building    | string       | null: false                    |
-| phone       | string       | null: false                    |
-| user        | references   | null: false, foreign_key: true |
-| item        | references   | null: false, foreign_key: true |
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| source              | string     | null: false                    |
+| purchase_management | references | null: false, foreign_key: true |
+| post_number         | string     | null: false                    |
+| shipmentsource_id   | integer    | null: false                    |
+| si                  | string     | null: false                    |
+| banti               | string     | null: false                    |
+| building            | string     |                                |
+| phone               | string     | null: false                    |
 
 
 ### Association
@@ -62,12 +60,11 @@
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| buyuser | references | null: false  foreign_key: true |
-| product | string     | null: false                    |
-| adress  | references | null: false, foreign_key: true |
+| user    | references | null: false  foreign_key: true |
+| item    | references | null: false  foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- hass_one :adresses
+- has_one :adress
