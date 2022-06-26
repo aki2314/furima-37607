@@ -42,7 +42,6 @@
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| source              | string     | null: false                    |
 | purchase_management | references | null: false, foreign_key: true |
 | post_number         | string     | null: false                    |
 | shipmentsource_id   | integer    | null: false                    |
