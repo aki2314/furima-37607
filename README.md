@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :sells
+- has_many :purchases
 
 ## items テーブル
 
@@ -36,13 +36,13 @@
 ### Association
 
 - belongs_to :user
-- has_one :sell
+- has_one :purchase
 
 ## adresses テーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| purchase_management | references | null: false, foreign_key: true |
+| purchase            | references | null: false, foreign_key: true |
 | post_number         | string     | null: false                    |
 | shipmentsource_id   | integer    | null: false                    |
 | si                  | string     | null: false                    |
@@ -53,9 +53,9 @@
 
 ### Association
 
-- belongs_to :sell
+- belongs_to :purchase
 
-## sells テーブル
+## purchases テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
