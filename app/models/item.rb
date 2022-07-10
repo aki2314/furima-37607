@@ -20,6 +20,11 @@ class Item < ApplicationRecord
   belongs_to :derivalyprice
   belongs_to :derivalyday
 
+  validates :category_id, numericality: { other_than: 1 } 
+  validates :status_id, numericality: { other_than: 1 } 
+  validates :shipmentsource_id, numericality: { other_than: 1 } 
+  validates :derivalyprice_id, numericality: { other_than: 1 } 
+  validates :derivalyday_id, numericality: { other_than: 1 } 
 
 
 end
