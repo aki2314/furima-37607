@@ -11,6 +11,7 @@ class Item < ApplicationRecord
   validates :derivalyprice_id,  presence: true
   validates :derivalyday_id,    presence: true
   validates :user,              presence: true
+  validates :image,             presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
@@ -19,6 +20,6 @@ class Item < ApplicationRecord
   belongs_to :derivalyprice
   belongs_to :derivalyday
 
-  validates :title, :text, presence: true
-  validates :genre_id, numericality: { other_than: 1 , message: "can't be blank"}
+
+
 end
