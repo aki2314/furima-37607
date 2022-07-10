@@ -6,8 +6,9 @@ class Item < ApplicationRecord
   validates :detail,            presence: true
   validates :category_id,       presence: true
   validates :status_id,         presence: true
-  validates :shipmentsource_id, presence: true 
-  validates :price,             presence: true, format: { with: /\A[0-9]+\z/ }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  validates :shipmentsource_id, presence: true
+  validates :price,             presence: true, format: { with: /\A[0-9]+\z/ },
+                                numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :derivalyprice_id,  presence: true
   validates :derivalyday_id,    presence: true
   validates :user,              presence: true
@@ -20,11 +21,9 @@ class Item < ApplicationRecord
   belongs_to :derivalyprice
   belongs_to :derivalyday
 
-  validates :category_id, numericality: { other_than: 1 } 
-  validates :status_id, numericality: { other_than: 1 } 
-  validates :shipmentsource_id, numericality: { other_than: 1 } 
-  validates :derivalyprice_id, numericality: { other_than: 1 } 
-  validates :derivalyday_id, numericality: { other_than: 1 } 
-
-
+  validates :category_id, numericality: { other_than: 1 }
+  validates :status_id, numericality: { other_than: 1 }
+  validates :shipmentsource_id, numericality: { other_than: 1 }
+  validates :derivalyprice_id, numericality: { other_than: 1 }
+  validates :derivalyday_id, numericality: { other_than: 1 }
 end
