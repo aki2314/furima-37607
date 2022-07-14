@@ -7,11 +7,10 @@ class Item < ApplicationRecord
   validates :category_id,       presence: true
   validates :status_id,         presence: true
   validates :shipmentsource_id, presence: true
-  validates :price,             presence: true, format: { with: /\A[0-9]+\z/ },
-                                numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  validates :price,             presence: true,
+                                numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :derivalyprice_id,  presence: true
   validates :derivalyday_id,    presence: true
-  validates :user,              presence: true
   validates :image,             presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions

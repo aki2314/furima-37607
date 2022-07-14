@@ -5,6 +5,7 @@ RSpec.describe Item, type: :model do
     @item = FactoryBot.build(:item)
   end
   describe '商品出品機能' do
+    context '出品できない場合' do
     it '商品画像を1枚つけることが必須' do
       @item.image = nil
       @item.valid?
@@ -65,5 +66,41 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include('Price is not a number')
     end
+    it 'カテゴリで『---』が選択されている時保存出来ない' do
+      @item.category_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Category must be other than 1')
+    end
+    it '状態で『---』が選択されている時保存出来ない' do
+      @item.status_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Status must be other than 1')
+    end
+    it '発送元の地域で『---』が選択されている時保存出来ない' do
+      @item.shipmentsource_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Shipmentsource must be other than 1')
+    end
+    it '発送料金で『---』が選択されている時保存出来ない' do
+      @item.derivalyprice_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Derivalyprice must be other than 1')
+    end
+    it '発送日数で『---』が選択されている時保存出来ない' do
+      @item.derivalyday_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Derivalyday must be other than 1')
+    end
+    it 'userが紐付いていなければ出品できない' do
+      @item.user = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include('User must exist')
+    end
+  end
+  context '出品できる場合' do
+    it '出品データを保存できる' do
+      expect(@item).to be_valid
+    end
+  end
   end
 end
