@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-
     name              { '山' }
     detail            { '谷' }
     category_id       { 2 }
