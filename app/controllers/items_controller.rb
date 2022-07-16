@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.find(params[:id])
+    @item = Item.new
   end
 
   def create
