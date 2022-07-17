@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :move_to_index, except: [:index, :show]
+  before_action :item_carum, except: [:index, :create, :new, :item_params]
   def index
     @items = Item.all.order(created_at: :desc)
   end
@@ -36,6 +37,10 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def item_carum
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name, :detail, :price, :image, :category_id, :status_id, :shipmentsource_id, :derivalyprice_id,
