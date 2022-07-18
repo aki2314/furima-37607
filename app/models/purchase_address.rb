@@ -4,7 +4,7 @@ class PurchaseAddress
 
   validates :purchase_id, presence: true
   validates :post_number, presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-  validates :shipmentsource, numericality: {other_than: 0, message: "can't be blank"}
+  validates :shipmentsource_id, numericality: {other_than: 0, message: "can't be blank"}
   validates :si, presence: true
   validates :banti, presence: true
   validates :phone, presence: true, format: { with: /\A(0{1}\d{9,10})\z/ }
