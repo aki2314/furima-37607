@@ -3,14 +3,11 @@ class PurchasesController < ApplicationController
   before_action :item_carum
   def index
     @purchase_address = PurchaseAddress.new
-    
-    if current_user.id == @items.user_id || @items.purchase.present?
-      redirect_to root_path
-    end
+
+    redirect_to root_path if current_user.id == @items.user_id || @items.purchase.present?
   end
 
   def create
-   
     @purchase_address = PurchaseAddress.new(purchase_params)
     if @purchase_address.valid?
       pay_item
