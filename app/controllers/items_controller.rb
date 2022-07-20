@@ -20,10 +20,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-     if @item.purchase.present? 
-      redirect_to root_path
+    redirect_to root_path if @item.purchase.present?
   end
-end
 
   def edit
   end
@@ -37,11 +35,11 @@ end
   end
 
   def destroy
-    if current_user.id == @item.user_id 
-    @item.destroy
-    redirect_to root_path
+    if current_user.id == @item.user_id
+      @item.destroy
+      redirect_to root_path
     else
-    redirect_to root_path
+      redirect_to root_path
     end
   end
 
