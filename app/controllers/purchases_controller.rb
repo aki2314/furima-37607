@@ -1,6 +1,8 @@
 class PurchasesController < ApplicationController
   def index
     @purchase_address = PurchaseAddress.new
+    @items = Item.find(params[:item_id])
+
   end
 
 
