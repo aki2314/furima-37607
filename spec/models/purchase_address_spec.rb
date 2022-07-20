@@ -43,12 +43,20 @@ RSpec.describe PurchaseAddress, type: :model do
   @purchase_address.valid?
   expect(@purchase_address.errors.full_messages).to include("Phone is invalid")
   end
+  it "tokenが空では登録できないこと" do
+    @purchase_address.token = nil
+    @purchase_address.valid?
+    expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
+  end
   end
   end
   context '出品できる場合' do
     it '建物名は任意であること。'do
     @purchase_address.building = ""
     expect(@purchase_address).to be_valid
+    end
+    it "入力内容埋まれば保存ができること" do
+      expect(@purchase_address).to be_valid
     end
   end
 

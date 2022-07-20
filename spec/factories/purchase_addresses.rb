@@ -6,7 +6,7 @@ FactoryBot.define do
     banti   { '番地' }
      building   { '建物' }
      phone   { '00033334444' }
-  
+     token {"tok_abcdefghijk00000000000000000"}
 
   end
 end
