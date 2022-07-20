@@ -38,7 +38,7 @@
 - belongs_to :user
 - has_one :purchase
 
-## adresses テーブル
+## addresses テーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
@@ -66,4 +66,4 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :adress
+- has_one :address
